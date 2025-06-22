@@ -1,0 +1,18 @@
+<div class="card text-white bg-success">
+    <div class="card-header">
+        <h4><em class="fa-solid fa-cake-candles"></em>  Birthdays</h4>
+    </div>
+    <div class="card-body p-0">
+        <div *ngIf="user.length!=0 else nouser">
+            <ul class="list-group" *ngFor="let u of user">
+                <li class="list-group-item list-group-item-success d-flex justify-content-between">
+                    <span>{{ u.fname | titlecase }} {{ u.lname | titlecase }}</span>
+                    <span>{{ u.bdate | date: 'fullDate' }}</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<ng-template #nouser>
+    <p class="text-center p-3">No Birthdays This month</p>
+</ng-template>

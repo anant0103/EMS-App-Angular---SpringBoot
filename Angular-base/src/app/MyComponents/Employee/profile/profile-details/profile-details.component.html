@@ -1,0 +1,44 @@
+<h3>Profile</h3>
+<table class="table table-hover shadow">
+    <thead class="table-dark">
+        <tr>
+            <th scope="col">Parameters</th>
+            <th scope="col">Details</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th scope="row">Full Name</th>
+            <td>{{employee.fname}} {{employee.lname}}</td>
+        </tr>
+        <tr>
+            <th scope="row">Email Id</th>
+            <td>{{employee.email}}</td>
+        </tr>
+        <tr>
+            <th scope="row">Gender</th>
+            <td>{{employee.gender}}</td>
+        </tr>
+        <tr>
+            <th scope="row">Designation</th>
+            <td>{{employee.designation}}</td>
+        </tr>
+        <tr>
+            <th scope="row">Address</th>
+            <td>{{employee.address}}</td>
+        </tr>
+        <tr>
+            <th scope="row">Phone No.</th>
+            <td>{{employee.phoneno}}</td>
+        </tr>
+        <tr>
+            <th scope="row">Birth date</th>
+            <td>{{employee.bdate | date:'mediumDate'}}</td>
+        </tr>
+        <tr>
+            <th scope="row">Join Date</th>
+            <td>{{employee.jdate | date:'mediumDate'}}</td>
+        </tr>
+    </tbody>
+</table>
+<a type="button" class="btn btn-success" routerLink="/profile-update">Update Profile</a>

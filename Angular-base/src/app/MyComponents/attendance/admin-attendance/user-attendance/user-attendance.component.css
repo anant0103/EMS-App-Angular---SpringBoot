@@ -1,0 +1,11 @@
+/* .card {
+    height: 400px;
+} */
+
+:host ::ng-deep #sheetBtn{
+    display: none;
+}
+
+:host ::ng-deep #atBtn{
+    display: none ;
+}

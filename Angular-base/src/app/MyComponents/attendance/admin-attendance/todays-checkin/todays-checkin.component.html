@@ -1,0 +1,36 @@
+<div class="card text-dark bg-white">
+    <div class="card-header">
+        <h4>Today's Log </h4>
+    </div>
+    <div class="card-body">
+
+        <div class="card text-dark bg-white mb-3">
+            <div class="card-header">
+                <h4>Today's CheckIn</h4>
+            </div>
+            <div class="card-body p-0">
+                <ul class="list-group" *ngFor="let signIn of signInData">
+                    <li class="list-group-item list-group-item-light d-flex justify-content-between">
+                        <span>{{ signIn.name }}</span>
+                        <span><b>{{ signIn.time }} <em class="fa-solid fa-xl fa-circle-check" style="color: green;"></em></b></span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card text-dark bg-white">
+            <div class="card-header">
+                <h4>Today's Absent</h4>
+            </div>
+            <div class="card-body p-0">
+                <ul class="list-group" *ngFor="let signIn of employees">
+                    <li class="list-group-item list-group-item-light d-flex justify-content-between">
+                        <span>{{ signIn.fname }} {{ signIn.lname }}</span>
+                        <span><em class="fa-solid fa-xl fa-circle-xmark" style="color: red;"></em></span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+</div>

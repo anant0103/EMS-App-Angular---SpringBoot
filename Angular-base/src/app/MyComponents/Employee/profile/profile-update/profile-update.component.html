@@ -1,0 +1,179 @@
+<div class="container col-md-8 offset-md-2 ">
+
+    <h3>Profile Update</h3>
+    
+    <form #userForm="ngForm" (ngSubmit)="userForm.form.valid && onSubmit()" class="needs-validation">
+
+        <!-- <div class="form-group">
+          <label for="email">Email address</label>
+          <input [(ngModel)]="employee.email" name="email" type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email">
+        </div> -->
+
+        <div class="form-group">
+          <label for="email">Email address</label>
+          <input [(ngModel)]="employee.email" name="email" type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email"
+          #email="ngModel" [ngClass]="{ 'is-invalid':userForm.submitted && email.invalid, 'is-valid':userForm.submitted && email.valid}" email required>
+          <div *ngIf="userForm.submitted && email.invalid" class="invalid-feedback">
+            <div *ngIf="email.errors?.['required']">Email is required</div>
+            <div *ngIf="email.errors?.['email']">Must be a valid email address</div>
+          </div>
+          <div *ngIf="userForm.submitted && email.valid" class="valid-feedback">
+            <div >Excellent</div>
+          </div>
+        </div>
+
+
+        <!-- <div class="form-group">
+            <label for="fname">First Name</label>
+            <input  [(ngModel)]="employee.fname" name="fname" type="text" class="form-control" id="fname" placeholder="Enter First Name">
+          </div> -->
+
+          <div class="form-group">
+            <label for="fname">First Name</label>
+            <input  [(ngModel)]="employee.fname" name="fname" type="text" class="form-control" id="fname" placeholder="Enter First Name"
+            #fname="ngModel" [ngClass]="{'is-invalid':userForm.submitted && fname.invalid,'is-valid':userForm.submitted && fname.valid}" required pattern="^[a-zA-Z \-\']+">
+            <div *ngIf="userForm.submitted && fname.invalid" class="invalid-feedback">
+              <div *ngIf="fname.errors?.['required']">First Name is required</div>
+              <div *ngIf="fname.errors?.['pattern']">First Name must be in Alphabets</div>
+            </div>
+            <div *ngIf="userForm.submitted && fname.valid" class="valid-feedback">
+              <div>Excellent</div>
+            </div>
+          </div>
+
+          <!-- <div class="form-group">
+            <label for="lname">Last Name</label>
+            <input  [(ngModel)]="employee.lname" name="lname" type="text" class="form-control" id="lname" placeholder="Enter Last Name">
+          </div> -->
+
+          <div class="form-group">
+            <label for="lname">Last Name</label>
+            <input  [(ngModel)]="employee.lname" name="lname" type="text" class="form-control" id="lname" placeholder="Enter Last Name"
+            #lname="ngModel" [ngClass]="{'is-invalid':userForm.submitted && lname.invalid, 'is-valid':userForm.submitted && lname.valid }" required pattern="^[a-zA-Z \-\']+">
+            <div *ngIf="userForm.submitted && lname.invalid" class="invalid-feedback">
+              <div *ngIf="lname.errors?.['required']">Last Name is required</div>
+              <div *ngIf="lname.errors?.['pattern']">Last Name must be in Alphabets</div>
+            </div>
+            <div *ngIf="userForm.submitted && lname.valid" class="valid-feedback">
+              <div>Excellent</div>
+            </div>
+          </div>
+
+          <!-- <div class="form-group">
+            <label for="gender">Gender</label>
+            <input  [(ngModel)]="employee.gender" name="gender" type="text" class="form-control" id="gender" placeholder="Enter Gender">
+          </div> -->
+
+          <label>Gender</label><br/>
+      <div class="form-group btn-group" data-toggle="button">
+        <input [(ngModel)]="employee.gender" type="radio" class="btn-check" name="options" id="option1" autocomplete="off" value="MALE"
+        #gender="ngModel" [ngClass]="{'is-invalid':userForm.submitted && gender.invalid, 'is-valid':userForm.submitted && gender.valid }" required>
+        <label class="btn btn-secondary" for="option1">Male</label>
+        <input [(ngModel)]="employee.gender" type="radio" class="btn-check" name="options" id="option2" autocomplete="off" value="FEMALE"
+        #gender="ngModel" [ngClass]="{'is-invalid':userForm.submitted && gender.invalid, 'is-valid':userForm.submitted && gender.valid }" required>
+        <label class="btn btn-secondary" for="option2">Female</label>
+        <div *ngIf="userForm.submitted && gender.invalid" class="invalid-feedback">
+          <div *ngIf="gender.errors?.['required']">Select Gender</div>
+        </div>
+        <div *ngIf="userForm.submitted && gender.valid" class="valid-feedback">
+          <div>Excellent</div>
+        </div>
+      </div>
+
+          <!-- <div class="form-group">
+            <label for="address">Address</label>
+            <input  [(ngModel)]="employee.address" name="address" type="text" class="form-control" id="address" placeholder="Enter Address">
+          </div> -->
+
+          <div class="form-group">
+            <label for="address">Address</label>
+            <input  [(ngModel)]="employee.address" name="address" type="text" class="form-control" id="address" placeholder="Enter Address"
+            #address="ngModel" [ngClass]="{'is-invalid':userForm.submitted && address.invalid, 'is-valid':userForm.submitted && address.valid }" required minlength=20>
+            <div *ngIf="userForm.submitted && address.invalid" class="invalid-feedback">
+              <div *ngIf="address.errors?.['required']">Address is required</div>
+              <div *ngIf="address.errors?.['minlength']">Address length must be greater than 20</div>
+            </div>
+            <div *ngIf="userForm.submitted && address.valid" class="valid-feedback">
+              <div>Excellent</div>
+            </div>
+          </div>
+
+
+          <!-- <div class="form-group">
+            <label for="des">Designation</label>
+            <input  [(ngModel)]="employee.designation" name="des" type="text" class="form-control" id="des" placeholder="Enter Designation">
+          </div> -->
+
+          <div class="form-group">
+            <label for="des">Designation</label>
+            <input  [(ngModel)]="employee.designation" name="des" type="text" class="form-control" id="des" placeholder="Enter Designation"
+            #des="ngModel" [ngClass]="{'is-invalid':userForm.submitted && des.invalid, 'is-valid':userForm.submitted && des.valid }" required pattern="^[a-zA-Z \-\']+">
+            <div *ngIf="userForm.submitted && des.invalid" class="invalid-feedback">
+              <div *ngIf="des.errors?.['required']">Designation is required</div>
+              <div *ngIf="des.errors?.['pattern']">Designation must be in Alphabets</div>
+            </div>
+            <div *ngIf="userForm.submitted && des.valid" class="valid-feedback">
+              <div>Excellent</div>
+            </div>
+          </div>
+
+          <!-- <div class="form-group">
+            <label for="bdate">Birth Date</label>
+            <input  [(ngModel)]="employee.bdate" name="bdate" type="date" class="form-control" id="bdate" placeholder="Enter Birth Date">
+          </div> -->
+
+          <div class="form-group">
+            <label for="bdate">Birth Date</label>
+            <input  [(ngModel)]="employee.bdate" name="bdate" type="date" class="form-control" id="bdate" placeholder="Enter Birth Date"
+            #bdate="ngModel" [ngClass]="{'is-invalid':userForm.submitted && bdate.invalid, 'is-valid':userForm.submitted && bdate.valid }" required>
+            <div *ngIf="userForm.submitted && bdate.invalid" class="invalid-feedback">
+              <div *ngIf="bdate.errors?.['required']">Birth Date is required</div>
+            </div>
+            <div *ngIf="userForm.submitted && bdate.valid" class="valid-feedback">
+              <div>Excellent</div>
+            </div>
+          </div>
+
+
+          <!-- <div class="form-group">
+            <label for="jdate">Join Date</label>
+            <input  [(ngModel)]="employee.jdate" name="jdate" type="date" class="form-control" id="jdate" placeholder="Enter Join Date">
+          </div> -->
+
+          <div class="form-group">
+            <label for="jdate">Join Date</label>
+            <input  [(ngModel)]="employee.jdate" name="jdate" type="date" class="form-control" id="jdate" placeholder="Enter Join Date"
+            #jdate="ngModel" [ngClass]="{'is-invalid':userForm.submitted && jdate.invalid, 'is-valid':userForm.submitted && jdate.valid }" required>
+            <div *ngIf="userForm.submitted && jdate.invalid" class="invalid-feedback">
+              <div *ngIf="jdate.errors?.['required']">Join Date is required</div>
+            </div>
+            <div *ngIf="userForm.submitted && jdate.valid" class="valid-feedback">
+              <div>Excellent</div>
+            </div>
+          </div>
+
+          <!-- <div class="form-group">
+            <label for="phone">Phone No.</label>
+            <input  [(ngModel)]="employee.phoneno" name="phone"  type="tel" min="1" max="10" class="form-control" id="phone" placeholder="Enter Phone No.">
+          </div> -->
+
+          <div class="form-group">
+            <label for="phone">Phone No.</label>
+            <input  [(ngModel)]="employee.phoneno" name="phone" type="tel" class="form-control" id="phone" placeholder="Enter Phone No."
+            #tele="ngModel" [ngClass]="{'is-invalid':userForm.submitted && tele.invalid, 'is-valid':userForm.submitted && tele.valid }" required pattern="^[0-9]+" minlength="10" maxlength="10">
+            <div *ngIf="userForm.submitted && tele.invalid" class="invalid-feedback">
+              <div *ngIf="tele.errors?.['required']">Phone Number is required</div>
+              <div *ngIf="tele.errors?.['pattern']">Phone Number must be in Numbers</div>
+              <div *ngIf="tele.errors?.['minlength']">Phone Number length must be 10</div>
+              <div *ngIf="tele.errors?.['maxlength']">Phone Number length must be 10</div>
+            </div>
+            <div *ngIf="userForm.submitted && tele.valid" class="valid-feedback">
+              <div>Excellent</div>
+            </div>
+          </div>
+
+        <button type="submit" class="btn btn-success m-2">Submit</button>
+      </form>
+    </div>
+    
+    

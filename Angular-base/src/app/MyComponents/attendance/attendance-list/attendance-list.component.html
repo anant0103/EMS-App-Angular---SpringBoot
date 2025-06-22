@@ -1,0 +1,27 @@
+<h3>Attendance Sheet</h3>
+
+<div *ngIf="attendanceList && attendanceList.length == 0; else elseBlock">
+    <p class="text-center">
+        No Attendance Available
+    </p>
+</div>    
+<ng-template #elseBlock>
+<table class="table table-hover shadow">
+    <thead class="table-dark">
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Date</th>
+            <th scope="col">In Time</th>
+            <th scope="col">Out Time</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let attendance of attendanceList">
+            <th scope="row">{{attendance.id}}</th>
+            <td>{{attendance.date | date:'mediumDate'}}</td>
+            <td>{{attendance.intime || '--:--:--'}}</td>
+            <td>{{attendance.outtime || '--:--:--'}}</td>
+        </tr>
+    </tbody>
+</table>
+</ng-template>

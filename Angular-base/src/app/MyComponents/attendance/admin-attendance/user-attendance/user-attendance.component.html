@@ -1,0 +1,18 @@
+<div class="card text-dark bg-white">
+    <div class="card-header">
+        <h4>Attendance Of Employee</h4>
+    </div>
+    <div class="card-body p-0 row">
+        <div class="col-11 col-md-11 col-lg-6 mx-3 my-2">
+            <select #mySelect (change)="onChangeId(mySelect.value)" class="form-select" aria-label="Default select example">
+                <option [value]="emp.idLong" *ngFor="let emp of employees">{{ emp.fname }} {{ emp.lname }}</option>
+            </select>
+        </div>
+        <div class="col-12 px-4 py-2">
+            <app-attendance-card [id]="selectedId" *ngIf="presentChart"></app-attendance-card>
+        </div>
+        <div class="col-12 px-4 py-2 chart">
+            <app-attendance-graph [id]="selectedId" *ngIf="presentChart"></app-attendance-graph>
+        </div>
+    </div>
+</div>

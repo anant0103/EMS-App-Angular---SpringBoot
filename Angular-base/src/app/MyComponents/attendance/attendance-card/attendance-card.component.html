@@ -1,0 +1,21 @@
+<div class="card text-dark bg-white">
+    <div class="card-header">
+        <h4>Check In/Out</h4>
+    </div>
+    <div class="card-body p-0">
+        <div>
+            <ul class="list-group" >
+                <li class="list-group-item list-group-item-light d-flex justify-content-between">
+                    <span>CheckIn : </span>
+                    <span *ngIf="attendanceIn == null"> <button class="btn btn-success" id="atBtn" (click)="checkIn();">CheckIn Now</button> </span>
+                    <span *ngIf="attendanceIn != null"><b>{{attendanceIn.intime}}</b>&nbsp;<em class="fa fa-xl fa-circle-check" style="color: #28a745;"></em> </span>
+                </li>
+                <li class="list-group-item list-group-item-light d-flex justify-content-between">
+                    <span>CheckOut : </span>
+                    <span *ngIf="attendanceOut == null"> <button class="btn btn-success" id="atBtn" [ngClass]="{'disabled': attendanceIn == null}" (click)="checkOut();">CheckOut Now</button> </span>
+                    <span *ngIf="attendanceOut != null"><b>{{attendanceOut.outtime}}</b>&nbsp;<i class="fa fa-xl fa-circle-check" style="color: #28a745;"></i> </span>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
